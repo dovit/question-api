@@ -48,6 +48,18 @@ class User extends BaseUser
      */
     protected $username;
 
+    /**
+     * @var int
+     * @ORM\Column(type="integer", options={"default" : 10000})
+     */
+    protected $limit;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer", options={"default" : 0})
+     */
+    protected $numberOfCall;
+
     public function setFullname(?string $fullname): void
     {
         $this->fullname = $fullname;
@@ -63,9 +75,35 @@ class User extends BaseUser
         return $user instanceof self && $user->id === $this->id;
     }
 
-    public function __construct()
+    /**
+     * @return int
+     */
+    public function getLimit(): int
     {
-        parent::__construct();
-        // your own logic
+        return $this->limit;
+    }
+
+    /**
+     * @param int $limit
+     */
+    public function setLimit(int $limit): void
+    {
+        $this->limit = $limit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfCall(): int
+    {
+        return $this->numberOfCall;
+    }
+
+    /**
+     * @param int $numberOfCall
+     */
+    public function setNumberOfCall(int $numberOfCall): void
+    {
+        $this->numberOfCall = $numberOfCall;
     }
 }
